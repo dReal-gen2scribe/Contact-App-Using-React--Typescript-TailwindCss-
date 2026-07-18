@@ -137,9 +137,9 @@ export default function Body() {
   }, [contacts]);
 
   return (
-    <div className="flex-1 overflow-y-auto">
-      <div className="w-328 h-13 shadow-xl shadow-blue-600/30"></div>
-      <div className="ml-8 mt-4">
+    <div className="flex-1 overflow-y-auto w-full">
+      <div className="w-full h-13 shadow-xl shadow-blue-600/30"></div>
+      <div className="md:px-8 px-4 mt-4">
         <Header />
       </div>
       <div>
@@ -150,19 +150,19 @@ export default function Body() {
           editContact={editContact}
         />
       </div>
-      <div className="m-8 flex gap-2">
+      <div className="px-4 md:px-8 my-6 flex flex-col md:flex-row gap-4">
         <input
           value={searchWord}
           onChange={handleSearchChange}
           type="text"
           placeholder="Search by Contact Name"
-          className="rounded-md w-120 bg-gray-200 placeholder: pl-2"
+          className="rounded-md w-full md:max-w-xl bg-gray-200 p-2"
         />
 
-        <div className="flex gap-2">
+        <div className="flex sm:flex-row gap-2">
           <button
             disabled={allSelected}
-            className=" bg-blue-800 p-2 text-white font-bold text rounded-md disabled:opacity-50 disabled:pointer-events-none flex items-center"
+            className="w-1/2 sm:w-auto bg-blue-800 p-2 text-white font-bold text rounded-md disabled:opacity-50 disabled:pointer-events-none flex items-center"
             onClick={toggleFormStyle}
           >
             <FaPlus />
@@ -170,7 +170,7 @@ export default function Body() {
           </button>
 
           <button
-            className={`bg-blue-800 p-2 text-white font-bold text rounded-md flex items-center ${allSelected ? "" : "hidden"}`}
+            className={`w-1/2 sm:w-auto bg-blue-800 p-2 text-white font-bold text rounded-md flex items-center ${allSelected ? "" : "hidden"}`}
             onClick={() => handleDeleteAll()}
           >
             <BsFillTrash3Fill />
@@ -188,8 +188,8 @@ export default function Body() {
         toggleFormStyle={toggleFormStyle}
       />
 
-      <div className="ml-8 w-120">
-        <table>
+      <div className="px-4 md:px-8 overflow-x-auto">
+        <table className="min-w-[700px] w-2/3">
           <thead>
             <tr className=" bg-gray-200 text-sm w-120">
               <th className="py-1 px-1 w-6">
@@ -201,9 +201,9 @@ export default function Body() {
                   checked={allSelected}
                 />
               </th>
-              <th className="py-1 px-1 w-33 text-left">Fullname</th>
-              <th className="px-1 py-1 w-45 text-left">Email address</th>
-              <th className="py-1 w-25 text-left">Phone number</th>
+              <th className="px-2 py-2 text-left">Fullname</th>
+              <th className="px-2 py-2 text-left">Email address</th>
+              <th className="px-2 py-2 text-left">Phone number</th>
               <th className=" w-6"></th>
             </tr>
           </thead>
@@ -225,17 +225,3 @@ export default function Body() {
     </div>
   );
 }
-
-// {contacts.length > 0
-//           ? contacts.map((contact) => (
-//               <SingleContact
-//                 key={contact.id}
-//                 contact={contact}
-//                 rowDisplay={rowDisplay}
-//                 contacts={contacts}
-//                 onSelectContact={setAtiveContact}
-//                 deleteContact={deleteContact}
-//                 setContacts={setContacts}
-//               />
-//             ))
-//           : null}
