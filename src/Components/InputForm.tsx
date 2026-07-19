@@ -31,6 +31,7 @@ const InputForm = ({ formStyle, input, setInput, addContact, toggleFormStyle }: 
     e.preventDefault();
     addContact(input.firstName, input.lastName, input.email, input.phoneNumber);
     setInput({ firstName: "", lastName: "", email: "", phoneNumber: "" });
+    toggleFormStyle();
   };
 
   return (
