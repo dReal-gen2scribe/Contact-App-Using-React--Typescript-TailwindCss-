@@ -1,12 +1,22 @@
-import { SideBar } from "./Components/SideBar.tsx";
-import Body from "./Components/Body.tsx";
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider } from "react-router-dom";
+import MainLayout from "./Layouts/MainLayout.tsx";
+import HomePage from "./Pages/HomePage.tsx";
+import ContactsPage from "./Pages/ContactsPage.tsx";
+import MessagePage from "./Pages/MessagePage.tsx";
+import SettingsPage from "./Pages/SettingsPage.tsx";
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<MainLayout />}>
+      <Route index element={<HomePage />} />
+      <Route path="/contacts" element={<ContactsPage />} />
+      <Route path="/message" element={<MessagePage />} />
+      <Route path="/settings" element={<SettingsPage />} />
+    </Route>,
+  ),
+);
 
 const App = () => {
-  return (
-    <div className="flex h-screen w-screen overflow-hidden">
-      <SideBar />
-      <Body />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 export default App;
